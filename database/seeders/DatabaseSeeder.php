@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Role;
+use App\Models\Contract;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,11 +17,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        foreach (Role::cases() as $role) {
+            \Spatie\Permission\Models\Role::findOrCreate($role->value);
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $contract = Contract::query()->create([
+            'name' => 'Main contract',
         ]);
+
+        /** @var User $admin */
+        $admin = User::factory()->create([
+            'email' => 'admin@test.com',
+        ]);
+
+        $admin->assignRole(Role::ADMIN->value);
+
+        /** @var User $client */
+        $client = User::factory()->create([
+            'email' => 'client@test.com',
+            'contract_id' => $contract->id,
+        ]);
+
+        $client->assignRole(Role::CLIENT->value);
     }
 }
