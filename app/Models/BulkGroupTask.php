@@ -24,7 +24,7 @@ class BulkGroupTask extends Model
         'failed_count',
         'payload_path',
         'started_at',
-        'finished_at'
+        'finished_at',
     ];
 
     protected $casts = [
@@ -32,6 +32,7 @@ class BulkGroupTask extends Model
         'started_at' => 'datetime',
         'finished_at' => 'datetime',
     ];
+
     public function contract(): BelongsTo
     {
         return $this->belongsTo(Contract::class);

@@ -13,7 +13,7 @@ class SimGroup extends Model
 
     protected $fillable = [
         'contract_id',
-        'name'
+        'name',
     ];
 
     public function contract(): BelongsTo

@@ -19,8 +19,7 @@ class AttachSimCardsToGroupJob implements ShouldQueue
         public int $simGroupId,
         public array $simCardIds,
         public ?int $userContractId = null,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Throwable

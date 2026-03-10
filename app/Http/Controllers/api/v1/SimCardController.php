@@ -41,7 +41,7 @@ class SimCardController extends Controller
             $search = preg_replace('/\D+/', '', $request->string('search')->value());
 
             if ($search !== '') {
-                $query->where('number', 'like', $search . '%');
+                $query->where('number', 'like', $search.'%');
             }
         }
 
@@ -56,6 +56,4 @@ class SimCardController extends Controller
 
         return response()->json($simCards);
     }
-
-
 }

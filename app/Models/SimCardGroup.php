@@ -10,7 +10,7 @@ class SimCardGroup extends Pivot
 
     protected $fillable = [
         'sim_card_id',
-        'sim_group_id'
+        'sim_group_id',
     ];
 
     public $timestamps = false;

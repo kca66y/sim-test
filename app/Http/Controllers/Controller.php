@@ -17,7 +17,7 @@ abstract class Controller
         /** @var User|null $user */
         $user = $request->attributes->get('test_user');
 
-        abort_unless((bool)$user, 401, 'Unauthorized');
+        abort_unless((bool) $user, 401, 'Unauthorized');
 
         return $user;
     }

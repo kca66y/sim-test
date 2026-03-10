@@ -8,7 +8,6 @@ use App\Models\SimCard;
 use App\Models\SimGroup;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class SimCardControllerTest extends TestCase
@@ -137,7 +136,7 @@ class SimCardControllerTest extends TestCase
 
         $response = $this
             ->withHeader('X-Test-User-Id', (string) $client->id)
-            ->getJson('/api/v1/sim-cards?group_id=' . $groupA->id);
+            ->getJson('/api/v1/sim-cards?group_id='.$groupA->id);
 
         $response
             ->assertOk()
@@ -169,7 +168,7 @@ class SimCardControllerTest extends TestCase
 
         $response = $this
             ->withHeader('X-Test-User-Id', (string) $admin->id)
-            ->getJson('/api/v1/sim-cards?contract_id=' . $contractA->id);
+            ->getJson('/api/v1/sim-cards?contract_id='.$contractA->id);
 
         $response
             ->assertOk()

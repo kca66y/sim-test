@@ -10,12 +10,12 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Model
 {
-    use HasRoles, HasFactory;
+    use HasFactory, HasRoles;
 
     protected $fillable = [
         'contract_id',
         'name',
-        'email'
+        'email',
     ];
 
     public function contract(): BelongsTo

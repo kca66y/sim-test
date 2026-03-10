@@ -7,9 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\IndexContractRequest;
 use App\Http\Requests\StoreContractRequest;
 use App\Models\Contract;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {

@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Contract;
 use App\Models\SimCard;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
 class SimCardFactory extends Factory
 {
@@ -14,7 +13,7 @@ class SimCardFactory extends Factory
     public function definition(): array
     {
         return [
-            'number' => '79' . $this->faker->unique()->numerify('#########'),
+            'number' => '79'.$this->faker->unique()->numerify('#########'),
             'contract_id' => Contract::factory(),
         ];
     }
