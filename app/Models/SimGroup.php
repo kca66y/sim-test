@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use App\Enums\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class User extends Model
+class SimGroup extends Model
 {
-    use HasRoles, HasFactory;
+    use HasFactory;
 
     protected $fillable = [
         'contract_id',
-        'name',
-        'email'
+        'name'
     ];
 
     public function contract(): BelongsTo
@@ -23,8 +21,13 @@ class User extends Model
         return $this->belongsTo(Contract::class);
     }
 
-    public function hasRoleEnum(Role $role): bool
+    public function simCards(): BelongsToMany
     {
-        return $this->hasRole($role->value);
+        return $this->belongsToMany(
+            SimCard::class,
+            'sim_card_group',
+            'sim_group_id',
+            'sim_card_id'
+        )->using(SimCardGroup::class);
     }
 }
