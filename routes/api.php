@@ -4,6 +4,7 @@ use App\Http\Controllers\api\v1\BulkGroupTaskController;
 use App\Http\Controllers\api\v1\ContractController;
 use App\Http\Controllers\api\v1\SimCardController;
 use App\Http\Controllers\api\v1\SimGroupController;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')
     ->middleware('resolve.test.user')
@@ -16,4 +17,8 @@ Route::prefix('v1')
         Route::post('sim-groups/{simGroup}/sim-cards', [SimGroupController::class, 'attachSimCards']);
 
         Route::get('bulk-group-tasks/{task}', [BulkGroupTaskController::class, 'show']);
+
+        Route::post(
+            'sim-groups/{simGroup}/sim-cards/import', [SimGroupController::class, 'importSimCards']
+        );
     });

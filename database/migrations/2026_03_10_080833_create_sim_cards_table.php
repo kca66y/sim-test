@@ -22,10 +22,8 @@ return new class extends Migration
             $table->string('number', 20);
             $table->timestamps();
 
-            $table->index(['contract_id', 'id']);
+            $table->unique(['contract_id', 'number']);
             $table->index('number');
-            $table->index('contract_id');
-
         });
     }
 
